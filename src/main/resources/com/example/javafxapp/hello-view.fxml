@@ -153,24 +153,31 @@
                                 <ColumnConstraints prefWidth="250" maxWidth="150"/>
                                 <ColumnConstraints prefWidth="250" maxWidth="50"/>
                         </columnConstraints>
-                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="MovementType" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="MovementType" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1" onAction="#MovementTypeChanged">
                                 <items>
                                 </items>
                         </ComboBox>
-                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="FigureToMove" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="FigureToMove" GridPane.rowIndex="3"
+                                  GridPane.columnIndex="1" onAction="#FigureToMoveChanged">
                                 <items>
                                 </items>
                         </ComboBox>
                         <Text visible="false" GridPane.rowIndex="4" GridPane.columnIndex="1">Position shift value: </Text>
                         <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="1" >x:</Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="2"></TextField>
+                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="2"
+                                   fx:id="ShiftXCoord"></TextField>
                         <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="3" >y:</Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="4"></TextField>
+                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="4"
+                                   fx:id="ShiftYCoord"></TextField>
                         <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="6" >Rotation angle: </Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="7"></TextField>
+                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="7"
+                                   fx:id="RotationAngle"></TextField>
                         <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="9" >Axis for shape reflection: </Text>
-                        <Spinner visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="10"></Spinner>
-                        <Button disable="true" GridPane.rowIndex="1" GridPane.columnIndex="12" prefWidth="200">Move Shape</Button>
+                        <Spinner visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="10"
+                                   fx:id="AxisMirroringSpinner"></Spinner>
+                        <Button disable="true" GridPane.rowIndex="1" GridPane.columnIndex="12" prefWidth="200"
+                                   fx:id="MoveFigureButton" onAction="#MoveFigure_Click">Move Shape</Button>
                 </GridPane>
                 <GridPane maxWidth="800" gridLinesVisible="false" visible="false" fx:id="FigureRemovalForm" GridPane.rowIndex="0">
                         <rowConstraints>

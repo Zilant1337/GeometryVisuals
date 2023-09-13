@@ -8,14 +8,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.util.Pair;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,10 +34,12 @@ public class HelloController {
     private GridPane FigureMovementForm;
     @FXML
     private GridPane IntersectionForm;
+
     @FXML
     private Canvas MainCanvas;
     @FXML
     private Text PerimeterOrArea;
+
     @FXML
     private ComboBox ShapeType;
     @FXML
@@ -47,18 +48,33 @@ public class HelloController {
     private TextField RadiusField;
     @FXML
     private Button AddFigureButton;
+
     @FXML
     private Button RemoveShapeButton;
     @FXML
     private ComboBox FigureToRemove;
+
     @FXML
     private ComboBox FigureToIntersect1;
     @FXML
     private ComboBox FigureToIntersect2;
     @FXML
+    private Button ShapesIntersectionButton;
+
+    @FXML
     private ComboBox FigureToMove;
     @FXML
-    private Button ShapesIntersectionButton;
+    private ComboBox MovementType;
+    @FXML
+    private TextField ShiftXCoord;
+    @FXML
+    private TextField ShiftYCoord;
+    @FXML
+    private TextField RotationAngle;
+    @FXML
+    private Spinner AxisMirroringSpinner;
+    @FXML
+    private Button MoveFigureButton;
 
     private ArrayList<IShape> shapesList;
     private List<TextField> xCoords;
@@ -123,6 +139,7 @@ public class HelloController {
         try {
             SetupAddFigureForm();
             SetupIntersectionForm();
+            SetupMovementForm();
         }
         catch (Exception ex)
         {
@@ -180,6 +197,27 @@ public class HelloController {
                 RedrawMainCanvas();
             }
         });
+    }
+    private void SetupMovementForm()
+    {
+        MovementType.setItems(FXCollections.observableArrayList(new String[]{
+                "Shift", "Rotate", "Mirror to Axis"
+        }));
+        AxisMirroringSpinner.setValueFactory(new SpinnerValueFactory.ListSpinnerValueFactory<String>(
+                new ObservableListBase<String>() {
+                    @Override
+                    public String get(int index) {
+                        if (index==0) return "x";
+                        else return "y";
+                    }
+
+                    @Override
+                    public int size() {
+                        return 2;
+                    }
+                }
+        ));
+        AxisMirroringSpinner.getValueFactory().wrapAroundProperty().setValue(true);
     }
     private void CreatePointFields()
     {
@@ -445,6 +483,7 @@ public class HelloController {
             });
         }
     }
+
     private void RedrawMainCanvas()
     {
         MainCanvas.getGraphicsContext2D().clearRect(0,0, MainCanvas.getWidth(), MainCanvas.getHeight());
@@ -619,5 +658,65 @@ public class HelloController {
         else
             PerimeterOrArea.setText("Intersection: don't intersect");
         SwitchGridTo(MainFormGrid);
+    }
+
+    @FXML
+    private void MovementTypeChanged()
+    {
+        MovementTypeOrFigureChanged();
+    }
+
+    @FXML
+    private void FigureToMoveChanged()
+    {
+        MovementTypeOrFigureChanged();
+    }
+
+    private void MovementTypeOrFigureChanged()
+    {
+        if (MovementType.getValue()!=null & FigureToMove.getValue()!=null){
+            MoveFigureButton.setDisable(false);
+            FigureMovementForm.getChildren().forEach(child -> {
+                child.setVisible(true);
+            });
+            if (MovementType.getValue()=="Shift"){
+                ShiftXCoord.setDisable(false);
+                ShiftYCoord.setDisable(false);
+                RotationAngle.setDisable(true);
+                AxisMirroringSpinner.setDisable(true);
+            }
+            else if (MovementType.getValue()=="Rotate"){
+                ShiftXCoord.setDisable(true);
+                ShiftYCoord.setDisable(true);
+                RotationAngle.setDisable(false);
+                AxisMirroringSpinner.setDisable(true);
+            }
+            else if (MovementType.getValue()=="Mirror to Axis"){
+                ShiftXCoord.setDisable(true);
+                ShiftYCoord.setDisable(true);
+                RotationAngle.setDisable(true);
+                AxisMirroringSpinner.setDisable(false);
+            }
+        }
+    }
+    @FXML
+    private void MoveFigure_Click(){
+        String action = MovementType.getValue().toString();
+        IShape figure = shapesList.get(FigureToMove.getSelectionModel().getSelectedIndex());
+        switch (action) {
+            case "Shift":
+                figure.shift(new Point2D(new double[]{
+                            Double.parseDouble(ShiftXCoord.getText()),
+                            Double.parseDouble(ShiftYCoord.getText())
+                }));
+                break;
+            case "Rotate":
+                figure.rot(Double.parseDouble(RotationAngle.getText()));
+                break;
+            case "Mirror to Axis":
+                figure.symAxis(AxisMirroringSpinner.getValue() == "x"? 0: 1);
+                break;
+        }
+        RedrawMainCanvas();
     }
 }
