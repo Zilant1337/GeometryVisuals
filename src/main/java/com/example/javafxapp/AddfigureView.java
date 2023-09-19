@@ -49,30 +49,60 @@ public class AddfigureView implements Initializable {
     }
     public void SetupAddFigureForm()
     {
-        AddShapeTypesToShapeTypeComboBox(FXCollections.observableArrayList(new String[]{
-                "Segment", "Polyline", "Circle", "Polygon",
-                "Triangle", "Quadrilateral",
-                "Rectangle", "Trapeze"}));
-        NumberOfVerticesField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 18, 1, 1) {
-        });
-        NumberOfVerticesField.valueProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                numberOfPoints = (Integer) NumberOfVerticesField.getValue();
-                for (int i = xCoords.size()-1; i >= numberOfPoints; i--) {
-                    xCoords.get(i).setDisable(true);
-                    XYCoordPointGrid.get(xCoords.get(i)).setDisable(true);
+        try {
+            AddShapeTypesToShapeTypeComboBox(FXCollections.observableArrayList(new String[]{
+                    "Segment", "Polyline", "Circle", "Polygon",
+                    "Triangle", "Quadrilateral",
+                    "Rectangle", "Trapeze"}));
+            NumberOfVerticesField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 18, 1, 1) {
+            });
+            NumberOfVerticesField.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    numberOfPoints = (Integer) NumberOfVerticesField.getValue();
+                    for (int i = xCoords.size() - 1; i >= numberOfPoints; i--) {
+                        xCoords.get(i).setDisable(true);
+                        XYCoordPointGrid.get(xCoords.get(i)).setDisable(true);
+                        xCoords.get(i).setText("");
+                        XYCoordPointGrid.get(xCoords.get(i)).setText("");
+                    }
+                    for (int i = 0; i < numberOfPoints; i++) {
+                        xCoords.get(i).setDisable(false);
+                        XYCoordPointGrid.get(xCoords.get(i)).setDisable(false);
+                        xCoords.get(i).setText("0");
+                        XYCoordPointGrid.get(xCoords.get(i)).setText("0");
+                    }
                 }
-                for (int i = 0; i < numberOfPoints; i++) {
-                    xCoords.get(i).setDisable(false);
-                    XYCoordPointGrid.get(xCoords.get(i)).setDisable(false);
+            });
+            CreatePointFields();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
                 }
-            }
-        });
-        CreatePointFields();
+            });
+        }
     }
     private void AddShapeTypesToShapeTypeComboBox(ObservableList obsList){
-        ShapeType.setItems(obsList);
+        try{
+            ShapeType.setItems(obsList);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
 
     private void CreatePointFields()
@@ -214,79 +244,231 @@ public class AddfigureView implements Initializable {
 
     private Segment DrawSegment(double[] start, double[] end)
     {
-        mainCanvas.getGraphicsContext2D().strokeLine(mainCanvas.getWidth()/2 + start[0],
-                mainCanvas.getHeight()/2 - start[1],
-                mainCanvas.getWidth()/2 + end[0],
-                mainCanvas.getHeight()/2 - end[1]);
-        return new Segment(new Point2D(start), new Point2D(end));
+        try {
+            mainCanvas.getGraphicsContext2D().strokeLine(mainCanvas.getWidth() / 2 + start[0],
+                    mainCanvas.getHeight() / 2 - start[1],
+                    mainCanvas.getWidth() / 2 + end[0],
+                    mainCanvas.getHeight() / 2 - end[1]);
+            return new Segment(new Point2D(start), new Point2D(end));
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
 
     private Circle DrawCircle(double[] center)
     {
-        mainCanvas.getGraphicsContext2D().strokeOval(mainCanvas.getWidth()/2 + center[0] - radiusValue,
-                mainCanvas.getHeight()/2 - center[1] - radiusValue,
-                2*radiusValue, 2*radiusValue);
-        return new Circle(new Point2D(center), radiusValue);
+        try {
+            mainCanvas.getGraphicsContext2D().strokeOval(mainCanvas.getWidth() / 2 + center[0] - radiusValue,
+                    mainCanvas.getHeight() / 2 - center[1] - radiusValue,
+                    2 * radiusValue, 2 * radiusValue);
+            return new Circle(new Point2D(center), radiusValue);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private Geometry.Polyline DrawPolyline()
     {
-        Point2D[] points = FormPointCollection();
-        for (int i = 0; i < numberOfPoints - 1; i++){
-            DrawSegment(points[i].x, points[i+1].x);
+        try {
+            Point2D[] points = FormPointCollection();
+            for (int i = 0; i < numberOfPoints - 1; i++) {
+                DrawSegment(points[i].x, points[i + 1].x);
+            }
+            return new Geometry.Polyline(points);
         }
-        return new Geometry.Polyline(points);
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private NGon DrawPolygon()
     {
-        Point2D[] points = FormPointCollection();
-        DrawPolyline();
-        DrawSegment(points[numberOfPoints-1].x, points[0].x);
-        return new NGon(points);
+        try {
+            Point2D[] points = FormPointCollection();
+            DrawPolyline();
+            DrawSegment(points[numberOfPoints - 1].x, points[0].x);
+            return new NGon(points);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private QGon DrawQuadrilateral()
     {
-        DrawPolygon();
-        return new QGon(FormPointCollection());
+        try {
+            DrawPolygon();
+            return new QGon(FormPointCollection());
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private TGon DrawTriangle()
     {
-        DrawPolygon();
-        return new TGon(FormPointCollection());
+        try {
+            DrawPolygon();
+            return new TGon(FormPointCollection());
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private Rectangle DrawRectangle()
     {
-        DrawPolygon();
-        return new Rectangle(FormPointCollection());
+        try {
+            DrawPolygon();
+            return new Rectangle(FormPointCollection());
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private Trapeze DrawTrapeze()
     {
-        DrawPolygon();
-        return new Trapeze(FormPointCollection());
+        try {
+            DrawPolygon();
+            return new Trapeze(FormPointCollection());
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private void DisablePoint(TextField x, TextField y)
     {
-        x.setText("");
-        y.setText("");
-        x.setDisable(true);
-        y.setDisable(true);
+        try {
+            x.setText("");
+            y.setText("");
+            x.setDisable(true);
+            y.setDisable(true);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     private void EnablePoint(TextField x, TextField y)
     {
-        x.setText("0");
-        y.setText("0");
-        x.setDisable(false);
-        y.setDisable(false);
+        try {
+            x.setText("0");
+            y.setText("0");
+            x.setDisable(false);
+            y.setDisable(false);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     private Point2D[] FormPointCollection()
     {
-        Point2D[] pointCollection = new Point2D[numberOfPoints];
-        for (int i = 0; i < numberOfPoints; i++) {
-            TextField x = xCoords.get(i);
-            pointCollection[i] = new Point2D(new double[]{Double.parseDouble(x.getText()),
-                    Double.parseDouble(XYCoordPointGrid.get(x).getText())
+        try {
+            Point2D[] pointCollection = new Point2D[numberOfPoints];
+            for (int i = 0; i < numberOfPoints; i++) {
+                TextField x = xCoords.get(i);
+                pointCollection[i] = new Point2D(new double[]{Double.parseDouble(x.getText()),
+                        Double.parseDouble(XYCoordPointGrid.get(x).getText())
+                });
+            }
+            return pointCollection;
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
             });
         }
-        return pointCollection;
+        return null;
     }
     @FXML
     private void AddShape_Click()
@@ -377,7 +559,20 @@ public class AddfigureView implements Initializable {
     }
     @FXML
     private void CloseWindow(){
-        Stage stage = (Stage)CloseButton.getScene().getWindow();
-        stage.close();
+        try {
+            Stage stage = (Stage) CloseButton.getScene().getWindow();
+            stage.close();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
 }

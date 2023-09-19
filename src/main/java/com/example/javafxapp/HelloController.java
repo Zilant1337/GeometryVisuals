@@ -25,8 +25,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-
-
+import java.util.List;
+import java.util.regex.Pattern;
+import javax.imageio.*;
+import javafx.embed.swing.SwingFXUtils;
 
 public class HelloController {
     public HelloApplication mainApplicationScript;
@@ -117,93 +119,224 @@ public class HelloController {
     protected void OpenFigureMovementForm(){ SwitchGridTo("movefigure-view.fxml");}
     public void RedrawMainCanvas()
     {
-        MainCanvas.getGraphicsContext2D().clearRect(0,0, MainCanvas.getWidth(), MainCanvas.getHeight());
-        DrawMainAxis();
-        DrawShapes();
+        try {
+            MainCanvas.getGraphicsContext2D().clearRect(0, 0, MainCanvas.getWidth(), MainCanvas.getHeight());
+            DrawMainAxis();
+            DrawShapes();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     private void DrawMainAxis()
     {
-        MainCanvas.getGraphicsContext2D().setStroke(Color.DARKGRAY);
-        MainCanvas.getGraphicsContext2D().setFill(Color.DARKGRAY);
-        MainCanvas.getGraphicsContext2D().setLineWidth(2);
-        MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth() * 1 / 50.0,
-                MainCanvas.getHeight() * 1.0 / 2.0,
-                MainCanvas.getWidth() * 49.0 / 50.0,
-                MainCanvas.getHeight() * 1.0 / 2.0);
-        MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth() * 1 / 2.0,
-                MainCanvas.getHeight() * 1.0 / 50.0,
-                MainCanvas.getWidth() * 1.0 / 2.0,
-                MainCanvas.getHeight() * 49.0 / 50.0);
-        MainCanvas.getGraphicsContext2D().setStroke(Color.BLACK);
-        MainCanvas.getGraphicsContext2D().setFill(Color.BLACK);
+        try {
+            MainCanvas.getGraphicsContext2D().setStroke(Color.DARKGRAY);
+            MainCanvas.getGraphicsContext2D().setFill(Color.DARKGRAY);
+            MainCanvas.getGraphicsContext2D().setLineWidth(2);
+            MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth() * 1 / 50.0,
+                    MainCanvas.getHeight() * 1.0 / 2.0,
+                    MainCanvas.getWidth() * 49.0 / 50.0,
+                    MainCanvas.getHeight() * 1.0 / 2.0);
+            MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth() * 1 / 2.0,
+                    MainCanvas.getHeight() * 1.0 / 50.0,
+                    MainCanvas.getWidth() * 1.0 / 2.0,
+                    MainCanvas.getHeight() * 49.0 / 50.0);
+            MainCanvas.getGraphicsContext2D().setStroke(Color.BLACK);
+            MainCanvas.getGraphicsContext2D().setFill(Color.BLACK);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     private void DrawShapes()
     {
-        for (int i = 0; i < shapesList.size(); i++){
-            if (redColoredShapesIndices[0]==i || redColoredShapesIndices[1]==i) {
-                MainCanvas.getGraphicsContext2D().setStroke(Color.RED);
-                MainCanvas.getGraphicsContext2D().setFill(Color.RED);
+        try {
+            for (int i = 0; i < shapesList.size(); i++) {
+                if (redColoredShapesIndices[0] == i || redColoredShapesIndices[1] == i) {
+                    MainCanvas.getGraphicsContext2D().setStroke(Color.RED);
+                    MainCanvas.getGraphicsContext2D().setFill(Color.RED);
+                }
+                if (shapesList.get(i) instanceof NGon)
+                    DrawPolygon(((NGon) shapesList.get(i)).getP());
+                else if (shapesList.get(i) instanceof Polyline)
+                    DrawPolyline(((Polyline) shapesList.get(i)).getP());
+                else if (shapesList.get(i) instanceof Segment)
+                    DrawSegment(((Segment) shapesList.get(i)).getStart().x, ((Segment) shapesList.get(i)).getFinish().x);
+                else if (shapesList.get(i) instanceof Circle)
+                    DrawCircle(((Circle) shapesList.get(i)).getP().x, ((Circle) shapesList.get(i)).getR());
+                if (redColoredShapesIndices[0] == i | redColoredShapesIndices[1] == i) {
+                    MainCanvas.getGraphicsContext2D().setStroke(Color.BLACK);
+                    MainCanvas.getGraphicsContext2D().setFill(Color.BLACK);
+                }
             }
-            if (shapesList.get(i) instanceof NGon)
-                DrawPolygon(((NGon) shapesList.get(i)).getP());
-            else if (shapesList.get(i) instanceof Polyline)
-                DrawPolyline(((Polyline) shapesList.get(i)).getP());
-            else if (shapesList.get(i) instanceof Segment)
-                DrawSegment(((Segment) shapesList.get(i)).getStart().x, ((Segment) shapesList.get(i)).getFinish().x);
-            else if (shapesList.get(i) instanceof Circle)
-                DrawCircle(((Circle) shapesList.get(i)).getP().x, ((Circle) shapesList.get(i)).getR());
-            if (redColoredShapesIndices[0]==i | redColoredShapesIndices[1]==i) {
-                MainCanvas.getGraphicsContext2D().setStroke(Color.BLACK);
-                MainCanvas.getGraphicsContext2D().setFill(Color.BLACK);
-            }
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
         }
     }
     private Segment DrawSegment(double[] start, double[] end)
     {
-        MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth()/2 + start[0],
-                MainCanvas.getHeight()/2 - start[1],
-                MainCanvas.getWidth()/2 + end[0],
-                MainCanvas.getHeight()/2 - end[1]);
-        return new Segment(new Point2D(start), new Point2D(end));
+        try {
+            MainCanvas.getGraphicsContext2D().strokeLine(MainCanvas.getWidth() / 2 + start[0],
+                    MainCanvas.getHeight() / 2 - start[1],
+                    MainCanvas.getWidth() / 2 + end[0],
+                    MainCanvas.getHeight() / 2 - end[1]);
+            return new Segment(new Point2D(start), new Point2D(end));
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
+        return null;
     }
     private void DrawCircle(double[] center, double R)
     {
-        MainCanvas.getGraphicsContext2D().strokeOval(MainCanvas.getWidth()/2 + center[0] - R,
-                MainCanvas.getHeight()/2 - center[1] - R,
-                2*R, 2*R);
+        try {
+            MainCanvas.getGraphicsContext2D().strokeOval(MainCanvas.getWidth() / 2 + center[0] - R,
+                    MainCanvas.getHeight() / 2 - center[1] - R,
+                    2 * R, 2 * R);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     private void DrawPolyline(Point2D[] points)
     {
-        for (int i = 0; i < points.length - 1; i++){
-            DrawSegment(points[i].x, points[i+1].x);
+        try {
+            for (int i = 0; i < points.length - 1; i++) {
+                DrawSegment(points[i].x, points[i + 1].x);
+            }
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
         }
     }
     private void DrawPolygon(Point2D[] points)
     {
-        DrawPolyline(points);
-        DrawSegment(points[points.length-1].x, points[0].x);
+        try {
+            DrawPolyline(points);
+            DrawSegment(points[points.length - 1].x, points[0].x);
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     @FXML
     private void Clear_Click() {
-        MainCanvas.getGraphicsContext2D().clearRect(0,0,
-                                                    MainCanvas.getWidth(),
-                                                    MainCanvas.getHeight());
-        shapesList.clear();
-        RedrawMainCanvas();
+        try {
+            MainCanvas.getGraphicsContext2D().clearRect(0, 0,
+                    MainCanvas.getWidth(),
+                    MainCanvas.getHeight());
+            shapesList.clear();
+            RedrawMainCanvas();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     @FXML
     private void Perimeter_Click() {
-        double P = 0;
-        for (IShape shape : shapesList)
-            P += shape.length();
-        PerimeterOrArea.setText("Area: " + String.valueOf(P));
+        try {
+            double P = 0;
+            for (IShape shape : shapesList)
+                P += shape.length();
+            PerimeterOrArea.setText("Perimeter: " + String.valueOf(P));
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     @FXML
     private void Area_Click() {
-        double S = 0;
-        for (IShape shape : shapesList)
-            S += shape.square();
-        PerimeterOrArea.setText("Perimeter: " + String.valueOf(S));
+        try {
+            double S = 0;
+            for (IShape shape : shapesList)
+                S += shape.square();
+            PerimeterOrArea.setText("Area: " + String.valueOf(S));
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     public void ShapeArea_Click(ActionEvent actionEvent) {
         CreateShapeStatPopup("area");
@@ -212,93 +345,223 @@ public class HelloController {
         CreateShapeStatPopup("perimeter");
     }
     public void CreateShapeStatPopup(String popupName){
-        VBox root = new VBox();
-        ComboBox shapesCBox = new ComboBox();
-        Button calcArea = new Button("Calculate " + popupName); calcArea.setMaxSize(200, 20);
-        Button cancel = new Button("Cancel"); cancel.setMaxSize(200, 20);
-        for (IShape shape : shapesList)
-            shapesCBox.getItems().add(shape.toString());
-        shapesCBox.setMaxSize(200, 20);
-        shapesCBox.valueProperty().addListener(new ChangeListener() {
-               @Override
-               public void changed(ObservableValue observableValue, Object o, Object t1) {
-                   calcArea.setDisable(false);
-               }
-        });
-        calcArea.setDisable(true);
-        calcArea.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            if (popupName=="perimeter")
-                PerimeterOrArea.setText("Perimeter: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).length());
-            else if (popupName=="area")
-                PerimeterOrArea.setText("Area: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).square());
-            ((Stage)calcArea.getScene().getWindow()).close();
-        });
-        cancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            ((Stage)cancel.getScene().getWindow()).close();
-        });
-        root.getChildren().add(shapesCBox);
-        root.getChildren().add(calcArea);
-        root.getChildren().add(cancel);
+        try {
+            VBox root = new VBox();
+            ComboBox shapesCBox = new ComboBox();
+            Button calcArea = new Button("Calculate " + popupName);
+            calcArea.setMaxSize(200, 20);
+            Button cancel = new Button("Cancel");
+            cancel.setMaxSize(200, 20);
+            for (IShape shape : shapesList)
+                shapesCBox.getItems().add(shape.toString());
+            shapesCBox.setMaxSize(200, 20);
+            shapesCBox.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    calcArea.setDisable(false);
+                }
+            });
+            calcArea.setDisable(true);
+            calcArea.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                if (popupName == "perimeter")
+                    PerimeterOrArea.setText("Perimeter: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).length());
+                else if (popupName == "area")
+                    PerimeterOrArea.setText("Area: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).square());
+                ((Stage) calcArea.getScene().getWindow()).close();
+            });
+            cancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                ((Stage) cancel.getScene().getWindow()).close();
+            });
+            root.getChildren().add(shapesCBox);
+            root.getChildren().add(calcArea);
+            root.getChildren().add(cancel);
 
-        Scene scene = new Scene(root, 200, 100);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+            Scene scene = new Scene(root, 200, 100);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
     public void ShowSaveFileDialog(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/presets"));
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
-        fileChooser.getExtensionFilters().add(extFilter);
-        StringBuilder sb = new StringBuilder();
-        for (IShape shape : shapesList){
-            sb.append(shape.toString().split(": ")[0] + "\n");
-            sb.append(shape.toString().split(": ")[1]);
-            sb.append("\n");
-        }
-        File file = fileChooser.showSaveDialog(MainCanvas.getScene().getWindow());
-        if(file != null){
-            try {
-                Files.write( file.toPath(), sb.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "/src/main/presets"));
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+            StringBuilder sb = new StringBuilder();
+            for (IShape shape : shapesList) {
+                sb.append(shape.toString().split(": ")[0] + "\n");
+                sb.append(shape.toString().split(": ")[1]);
+                sb.append("\n");
             }
+            File file = fileChooser.showSaveDialog(MainCanvas.getScene().getWindow());
+            if (file != null) {
+                try {
+                    Files.write(file.toPath(), sb.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE);
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Success");
+                    alert.setContentText("Preset successfully exported");
+                    alert.showAndWait().ifPresent(rs -> {
+                        if (rs == ButtonType.OK) {
+                            System.out.println("Pressed OK.");
+                        }
+                    });
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
         }
     }
     public void ShowUploadFileDialog(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/presets"));
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showSaveDialog(MainCanvas.getScene().getWindow());
-        if(file != null){
-            try {
-                String s = Files.readAllLines(file.toPath()).toString();
-                System.out.println(s);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try{
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/presets"));
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File file = fileChooser.showOpenDialog(MainCanvas.getScene().getWindow());
+            if(file != null){
+                try {
+                    List<String> s = Files.readAllLines(file.toPath());
+                    String[] specialSymbols = { "[", "{", "(", ")", "}", "]", "Center:", "Radius:"};
+                    String params = "";
+                    shapesList.clear();
+                    for (int i = 0; i < s.size() - 1; i+=2) {
+                        params = s.get(i+1);
+                        for (String sym : specialSymbols)
+                            params = String.join("", params.split(Pattern.quote(sym)));
+                        String[] points = params.split(";");
+                        Point2D[] point2DCollection = new Point2D[points.length];
+                        if (s.get(i).equals("Circle")){
+                            Point2D p = new Point2D(new double[]{Double.parseDouble(points[0].split(",")[0]),
+                                    Double.parseDouble(points[0].split(",")[1])
+                            });
+                            double r = Double.parseDouble(points[1]);
+                            Circle circle = new Circle(p, r);
+                            shapesList.add(circle);
+                        }
+                        else {
+                            if (s.get(i).equals("Segment")) {
+                                Point2D p1 = new Point2D(new double[]{Double.parseDouble(points[0].split(",")[0]),
+                                        Double.parseDouble(points[0].split(",")[1])
+                                });
+                                Point2D p2 = new Point2D(new double[]{Double.parseDouble(points[1].split(",")[0]),
+                                        Double.parseDouble(points[1].split(",")[1])
+                                });
+                                Segment segment = new Segment(p1, p2);
+                                shapesList.add(segment);
+                            }
+                            else {
+                                for (int j = 0; j < points.length; j++){
+                                    point2DCollection[j] = new Point2D(new double[]{Double.parseDouble(points[j].split(",")[0]),
+                                            Double.parseDouble(points[j].split(",")[1])
+                                    });
+                                }
+                                if (s.get(i).equals("Polyline")) {
+                                    shapesList.add(new Polyline(point2DCollection));
+                                }
+                                else if (s.get(i).equals("Polygon")) {
+                                    shapesList.add(new NGon(point2DCollection));
+                                }
+                                else if (s.get(i).equals("Triangle")) {
+                                    shapesList.add(new TGon(point2DCollection));
+                                }
+                                else if (s.get(i).equals("Quadrilateral")) {
+                                    shapesList.add(new QGon(point2DCollection));
+                                }
+                                else if (s.get(i).equals("Rectangle")) {
+                                    shapesList.add(new Rectangle(point2DCollection));
+                                }
+                                else if (s.get(i).equals("Trapeze")) {
+                                    shapesList.add(new Trapeze(point2DCollection));
+                                }
+                            }
+                        }
+                    }
+                    RedrawMainCanvas();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
-
     public void ShowSaveImageDialog(ActionEvent actionEvent) {
-        /*FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/screenshots"));
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showSaveDialog(MainCanvas.getScene().getWindow());
-        if (file != null) {
-            try {
-                WritableImage writableImage = new WritableImage((int)MainCanvas.getWidth(), (int)MainCanvas.getHeight());
-                MainCanvas.snapshot(null, writableImage);
-                //RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-                //ImageIO.write(renderedImage, "png", file);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                System.out.println("Error!");
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "/src/main/screenshots"));
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File file = fileChooser.showSaveDialog(MainCanvas.getScene().getWindow());
+            WritableImage writableImage = new WritableImage((int) MainCanvas.getWidth(), (int) MainCanvas.getHeight());
+            MainCanvas.snapshot(null, writableImage);
+            System.out.println(writableImage);
+            System.out.println(writableImage.getPixelWriter());
+            System.out.println(writableImage.getPixelWriter().getPixelFormat());
+            if (file != null) {
+                try {
+                    ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null),
+                            "png", file);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText("Success");
+                    alert.setContentText("Image successfully saved");
+                    alert.showAndWait().ifPresent(rs -> {
+                        if (rs == ButtonType.OK) {
+                            System.out.println("Pressed OK.");
+                        }
+                    });
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    System.out.println("Error!");
+                }
             }
-        }*/
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: " + ex.getMessage());
+            alert.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+        }
     }
 }
