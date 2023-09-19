@@ -115,13 +115,13 @@ public class Point {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Point([");
+        sb.append("(");
         for (int c = 0; c < dim; c++)
             if (c < dim-1)
-                sb.append(x[c]  + ", ");
+                sb.append(x[c]  + ",");
             else
-                sb.append(Double.toString(x[c]));
-        sb.append("])");
+                sb.append(x[c]);
+        sb.append(")");
         return sb.toString();
     }
 }

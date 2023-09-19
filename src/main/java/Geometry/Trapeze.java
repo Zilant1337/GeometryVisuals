@@ -7,13 +7,13 @@ public class Trapeze extends QGon {
 
     @Override public String toString()
     {
-        StringBuilder sb = new StringBuilder(); sb.append("Trapeze: Trapeze(super=NGon([");
+        StringBuilder sb = new StringBuilder(); sb.append("Trapeze: {");
         for (Point2D e : p)
             if (e != p[p.length - 1])
-                sb.append(e.toString() + ", ");
+                sb.append(e.toString() + ";");
             else
                 sb.append(e.toString());
-        sb.append("]))");
+        sb.append("}");
         return sb.toString();
     }
 }

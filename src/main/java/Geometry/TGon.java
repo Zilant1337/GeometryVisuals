@@ -13,13 +13,13 @@ public class TGon extends NGon{
 
     @Override public String toString()
     {
-        StringBuilder sb = new StringBuilder(); sb.append("Triangle: TGon(super=NGon([");
+        StringBuilder sb = new StringBuilder(); sb.append("Triangle: {");
         for (Point2D e : p)
         if (e != p[p.length - 1])
-            sb.append(e.toString() + ", ");
+            sb.append(e.toString() + ";");
         else
             sb.append(e.toString());
-        sb.append("]))");
+        sb.append("}");
         return sb.toString();
     }
 }

@@ -59,6 +59,6 @@ public class Circle implements IShape {
     }
 
     public String toString() {
-        return "Circle: Circle(Center=" + p.toString() + ", Radius=" + r + ")";
+        return "Circle: (Center:" + p.toString() + ";Radius:" + r + ")";
     }
 }

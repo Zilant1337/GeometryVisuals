@@ -25,17 +25,6 @@
 <?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <VBox maxWidth="782" maxHeight="560" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.javafxapp.HelloController">
-        <HBox spacing="0" layoutY="-1.0" prefHeight="20.0" prefWidth="800" GridPane.rowIndex="0">
-                <padding>
-                        <Insets top="0" bottom="0" right="0" left="0"></Insets>
-                </padding>
-                <Button prefWidth="100" text="Main Form" onAction="#OpenMainForm"></Button>
-                <Button prefWidth="100" text="Add Figure" onAction="#OpenFigureAdditionForm"></Button>
-                <Button prefWidth="100" text="Move Figure" onAction="#OpenFigureMovementForm"></Button>
-                <Button prefWidth="100" text="Remove Figure" onAction="#OpenFigureRemovalForm"></Button>
-                <Button prefWidth="100" text="Intersection" onAction="#OpenIntersectionForm"></Button>
-        </HBox>
-
         <GridPane>
                 <rowConstraints>
                         <RowConstraints percentHeight="3.5"/>
@@ -54,182 +43,25 @@
 
                         <Canvas fx:id="MainCanvas"  height="500" width="500" GridPane.columnIndex="0">
                         </Canvas>
-                        <VBox spacing="20" alignment="TOP_LEFT" GridPane.columnIndex="2">
+                        <VBox alignment="TOP_LEFT" GridPane.columnIndex="2">
                                 <padding>
-                                        <Insets top="28"/>
+                                        <Insets top="2"/>
                                 </padding>
-                                <Button maxWidth="800" fx:id="Clear" onAction="#Clear_Click">
-                                        Clear Canvas
-                                </Button>
-                                <Button maxWidth="800" fx:id="Perimeter" onAction="#Perimeter_Click">
-                                        Shapes' Perimeters Total
-                                </Button>
-                                <Button maxWidth="800" fx:id="Area" onAction="#Area_Click">
-                                        Shapes' Areas Total
-                                </Button>
+                                <Button prefWidth="300" text="Add Figure" onAction="#OpenFigureAdditionForm"/>
+                                <Button prefWidth="300" text="Export preset" onAction="#ShowSaveFileDialog"/>
+                                <Button prefWidth="300" text="Import preset" onAction="#ShowUploadFileDialog"/>
+                                <Button prefWidth="300" text="Save image" onAction="#ShowSaveImageDialog"/>
+                                <Button prefWidth="300" text="Move Figure" onAction="#OpenFigureMovementForm"/>
+                                <Button prefWidth="300" text="Remove Figure" onAction="#OpenFigureRemovalForm"/>
+                                <Button text="Clear Canvas" prefWidth="300" fx:id="Clear" onAction="#Clear_Click"></Button>
+                                <Button text="Shape's Area" prefWidth="300" fx:id="ShapeArea" onAction="#ShapeArea_Click"/>
+                                <Button text="Shape's Perimeter" prefWidth="300" fx:id="ShapePerimeter" onAction="#ShapePerimeter_Click"/>
+                                <Button text="Shapes' Areas Total"  prefWidth="300" fx:id="Area" onAction="#Area_Click"/>
+                                <Button text="Shapes' Perimeters Total" prefWidth="300" fx:id="Perimeter" onAction="#Perimeter_Click"/>
+                                <Button prefWidth="300" text="Intersection" onAction="#OpenIntersectionForm"/>
                         </VBox>
                         <Text translateY="200" GridPane.halignment="RIGHT" textAlignment="RIGHT"
                               fx:id="PerimeterOrArea" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
-                </GridPane>
-                <GridPane maxWidth="800" gridLinesVisible="false" visible="false" fx:id="FigureAdditionForm" GridPane.rowIndex="0">
-                        <columnConstraints>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="10" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="60" maxWidth="50"/>
-                        </columnConstraints>
-                        <rowConstraints>
-                                <RowConstraints percentHeight="10"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="2"/>
-                                <RowConstraints percentHeight="6"/>
-                                <RowConstraints percentHeight="20"/>
-                        </rowConstraints>
-                        <ComboBox prefWidth="200" GridPane.columnSpan="4" fx:id="ShapeType" GridPane.rowIndex="0"
-                                  GridPane.columnIndex="1" onAction="#ShapeType_SelectionChanged">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <Spinner GridPane.columnSpan="4" disable="true" fx:id="NumberOfVerticesField"
-                                 GridPane.rowIndex="0" GridPane.columnIndex="6" initialValue="1" >
-                        </Spinner>
-                        <Text GridPane.rowIndex="0" GridPane.columnIndex="11">Radius: </Text>
-                        <TextField GridPane.columnSpan="2" disable="true" fx:id="RadiusField" GridPane.rowIndex="0"
-                                   GridPane.columnIndex="13">
-                        </TextField>
-                        <Button fx:id="AddFigureButton" GridPane.columnSpan="3" disable="true" prefWidth="200"
-                                GridPane.rowIndex="0" GridPane.columnIndex="16" onAction="#AddShape_Click">
-                                Add Shape
-                        </Button>
-                </GridPane>
-                <GridPane maxWidth="800" gridLinesVisible="false" visible="false" fx:id="FigureMovementForm" GridPane.rowIndex="0">
-                        <rowConstraints>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="75"/>
-                        </rowConstraints>
-                        <columnConstraints>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="100"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="60"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="140"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="60"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="10"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="150"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                        </columnConstraints>
-                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="MovementType" GridPane.rowIndex="1"
-                                  GridPane.columnIndex="1" onAction="#MovementTypeChanged">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <ComboBox GridPane.columnSpan="4" prefWidth="200" fx:id="FigureToMove" GridPane.rowIndex="3"
-                                  GridPane.columnIndex="1" onAction="#FigureToMoveChanged">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <Text visible="false" GridPane.rowIndex="4" GridPane.columnIndex="1">Position shift value: </Text>
-                        <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="1" >x:</Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="2"
-                                   fx:id="ShiftXCoord"></TextField>
-                        <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="3" >y:</Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="4"
-                                   fx:id="ShiftYCoord"></TextField>
-                        <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="6" >Rotation angle: </Text>
-                        <TextField visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="7"
-                                   fx:id="RotationAngle"></TextField>
-                        <Text visible="false" GridPane.rowIndex="5" GridPane.columnIndex="9" >Axis for shape reflection: </Text>
-                        <Spinner visible="false" disable="true"  GridPane.rowIndex="5" GridPane.columnIndex="10"
-                                   fx:id="AxisMirroringSpinner"></Spinner>
-                        <Button disable="true" GridPane.rowIndex="1" GridPane.columnIndex="12" prefWidth="200"
-                                   fx:id="MoveFigureButton" onAction="#MoveFigure_Click">Move Shape</Button>
-                </GridPane>
-                <GridPane maxWidth="800" gridLinesVisible="false" visible="false" fx:id="FigureRemovalForm" GridPane.rowIndex="0">
-                        <rowConstraints>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="90"/>
-                        </rowConstraints>
-                        <columnConstraints>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="120"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="290" maxWidth="290"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="150"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                        </columnConstraints>
-                        <ComboBox prefWidth="200" fx:id="FigureToRemove" GridPane.rowIndex="1" GridPane.columnIndex="1"
-                                  onAction="#FigureToRemoveChanged">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <Button fx:id="RemoveShapeButton" disable="true" prefWidth="200" GridPane.columnIndex="5" GridPane.rowIndex="1" onAction="#RemoveShape_Click">Remove Shape</Button>
-                </GridPane>
-                <GridPane maxWidth="800" gridLinesVisible="false" visible="false" fx:id="IntersectionForm" GridPane.rowIndex="0">
-                        <rowConstraints>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="5"/>
-                                <RowConstraints percentHeight="2.5"/>
-                                <RowConstraints percentHeight="90"/>
-                        </rowConstraints>
-                        <columnConstraints>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="120"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="120"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="120"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="150"/>
-                                <ColumnConstraints prefWidth="250" maxWidth="50"/>
-                        </columnConstraints>
-                        <ComboBox prefWidth="200" fx:id="FigureToIntersect1" GridPane.rowIndex="1" GridPane.columnIndex="1">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <ComboBox prefWidth="200" fx:id="FigureToIntersect2" GridPane.rowIndex="1" GridPane.columnIndex="3">
-                                <items>
-                                </items>
-                        </ComboBox>
-                        <Button disable="true" prefWidth="200" GridPane.columnIndex="7" GridPane.rowIndex="1"
-                                fx:id="ShapesIntersectionButton" onAction="#IntersectShapes_Click">Intersect Shapes</Button>
                 </GridPane>
         </GridPane>
 </VBox>

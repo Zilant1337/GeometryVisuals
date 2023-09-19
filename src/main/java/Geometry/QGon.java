@@ -10,13 +10,13 @@ public class QGon extends NGon {
 
     @Override public String toString()
     {
-        StringBuilder sb = new StringBuilder(); sb.append("Quadrilateral: QGon(super=NGon([");
+        StringBuilder sb = new StringBuilder(); sb.append("Quadrilateral: {");
         for (Point2D e : p)
         if (e != p[p.length - 1])
-            sb.append(e.toString() + ", ");
+            sb.append(e.toString() + ";");
         else
             sb.append(e.toString());
-        sb.append("]))");
+        sb.append("}");
         return sb.toString();
     }
 }

@@ -7,13 +7,13 @@ public class Rectangle extends QGon {
     }
     @Override public String toString()
     {
-        StringBuilder sb = new StringBuilder(); sb.append("Rectangle: Rectangle(super=NGon([");
+        StringBuilder sb = new StringBuilder(); sb.append("Rectangle: {");
         for (Point2D e : p)
         if (e != p[p.length - 1])
-            sb.append(e.toString() + ", ");
+            sb.append(e.toString() + ";");
         else
             sb.append(e.toString());
-        sb.append("]))");
+        sb.append("}");
         return sb.toString();
     }
 }

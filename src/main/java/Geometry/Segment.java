@@ -59,7 +59,7 @@ public class Segment extends OpenFigure{
                 > (b.getX()[1] - a.getX()[1]) * (c.getX()[0] - a.getX()[0]);
         }
     @Override public String toString() {
-        return "Segment: Segment([" + start.toString() + ", " + finish.toString() + "])"; //"start: " + start.toString() + ", finish:" + finish.toString();
+        return "Segment: [" + start.toString() + ";" + finish.toString() + "]";
     }
 
 }

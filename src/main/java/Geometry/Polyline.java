@@ -28,13 +28,13 @@ public class Polyline extends OpenFigure{
         return false;
     }
     @Override public String toString() {
-        StringBuilder sb = new StringBuilder(); sb.append("Polyline: Polyline([");
+        StringBuilder sb = new StringBuilder(); sb.append("Polyline: [");
         for (Point2D e : p)
             if (e != p[p.length - 1])
-                sb.append(e.toString() + ", ");
+                sb.append(e.toString() + ";");
             else
                 sb.append(e.toString());
-        sb.append("])");
+        sb.append("]");
         return sb.toString();
     }
 }

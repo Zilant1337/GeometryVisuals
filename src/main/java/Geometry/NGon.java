@@ -47,13 +47,13 @@ public class NGon implements IShape {
 
     public String toString()
     {
-        StringBuilder sb = new StringBuilder(); sb.append("Polygon: NGon([");
+        StringBuilder sb = new StringBuilder(); sb.append("Polygon: {");
         for (Point2D e : p)
         if (e != p[p.length - 1])
-            sb.append(e.toString() + ", ");
+            sb.append(e.toString() + ";");
         else
             sb.append(e.toString());
-        sb.append("])");
+        sb.append("}");
         return sb.toString();
     }
 }
