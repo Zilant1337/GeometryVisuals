@@ -1,6 +1,6 @@
 package com.example.javafxapp;
 
-import Geometry.*;
+import GeometryFigs.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -174,12 +174,12 @@ public class IntersectfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -191,41 +191,41 @@ public class IntersectfigureView implements Initializable {
             if (FigureToIntersect1.getSelectionModel().getSelectedItem().toString().equals(
                     FigureToIntersect2.getSelectionModel().getSelectedItem().toString())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error");
-                alert.setContentText("Error: Intersection with oneself is not allowed");
+                alert.setTitle("Ошибка");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Ошибка: пересечение фигуры с самой собой запрещено");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                        System.out.println("Нажат ОК");
                     }
                 });
                 return;
             }
             if (mainWindowController.shapesList.get(filteredShapeIndices.get(FigureToIntersect1.getSelectionModel().getSelectedIndex())).cross(
                     mainWindowController.shapesList.get(filteredShapeIndices.get(FigureToIntersect2.getSelectionModel().getSelectedIndex()))))
-                mainWindowController.PerimeterOrArea.setText("Intersection: intersect");
+                mainWindowController.PerimeterOrArea.setText("Пересечение: Пересекается");
             else
-                mainWindowController.PerimeterOrArea.setText("Intersection: don't intersect");
+                mainWindowController.PerimeterOrArea.setText("Пересечение: Не пересекается");
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Success");
-            alert.setContentText("Shapes successfully intersected");
+            alert.setTitle("Удачно");
+            alert.setHeaderText("Удачно");
+            alert.setContentText("Пересечение удачно проверено");
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
             CloseWindow();
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -239,12 +239,12 @@ public class IntersectfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }

@@ -1,6 +1,6 @@
 package com.example.javafxapp;
 
-import Geometry.*;
+import GeometryFigs.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -78,12 +78,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -94,12 +94,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -114,15 +114,14 @@ public class AddfigureView implements Initializable {
             CreateSixPointFields(7, 7);
             CreateSixPointFields(12, 13);
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -137,7 +136,7 @@ public class AddfigureView implements Initializable {
                 Text y = new Text();
                 TextField xCoordinate = new TextField();
                 TextField yCoordinate = new TextField();
-                pointIndex.setText((index + countStartValue) + " point");
+                pointIndex.setText((index + countStartValue) + " Точка");
                 x.setText("x:");
                 y.setText("y:");
                 xCoordinate.prefHeight(140);
@@ -153,15 +152,14 @@ public class AddfigureView implements Initializable {
                 XYCoordPointGrid.put(xCoordinate, yCoordinate);
             }
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -228,15 +226,14 @@ public class AddfigureView implements Initializable {
             }
 
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -253,12 +250,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -275,34 +272,34 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
         return null;
     }
-    private Geometry.Polyline DrawPolyline()
+    private GeometryFigs.Polyline DrawPolyline()
     {
         try {
             Point2D[] points = FormPointCollection();
             for (int i = 0; i < numberOfPoints - 1; i++) {
                 DrawSegment(points[i].x, points[i + 1].x);
             }
-            return new Geometry.Polyline(points);
+            return new GeometryFigs.Polyline(points);
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -318,12 +315,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -337,12 +334,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -356,12 +353,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -375,12 +372,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -394,12 +391,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -415,12 +412,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -435,12 +432,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -459,12 +456,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -477,12 +474,12 @@ public class AddfigureView implements Initializable {
             if (ShapeType.getValue() == "")
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error");
-                alert.setContentText("Error: Shape type haven't been chosen");
+                alert.setTitle("Ошибка");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Ошибка: не выбран тип фигуры");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                        System.out.println("Нажат ОК");
                     }
                 });
             }
@@ -534,25 +531,24 @@ public class AddfigureView implements Initializable {
                 mainWindowController.shapesList.add(newShape);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setHeaderText("Success");
-                alert.setContentText("Item successfully added");
+                alert.setTitle("Удачно");
+                alert.setHeaderText("Удачно");
+                alert.setContentText("Фигура удачно добавлена");
                 alert.showAndWait().ifPresent(rs -> {
                     if (rs == ButtonType.OK) {
-                        System.out.println("Pressed OK.");
+                        System.out.println("Нажат ОК");
                     }
                 });
             }
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -565,12 +561,12 @@ public class AddfigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }

@@ -64,10 +64,10 @@
         </TextField>
         <Button fx:id="AddFigureButton" GridPane.columnSpan="3" disable="true" prefWidth="200"
                 GridPane.rowIndex="0" GridPane.columnIndex="16" onAction="#AddShape_Click">
-            Add Shape
+            Добавить фигуру
         </Button>
         <Button prefWidth="200" fx:id="CloseButton" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.columnIndex="16" onAction="#CloseWindow">
-            Cancel
+            Отменить
         </Button>
     </GridPane>
 </VBox>

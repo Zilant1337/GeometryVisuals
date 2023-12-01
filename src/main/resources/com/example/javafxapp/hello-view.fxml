@@ -47,18 +47,18 @@
                                 <padding>
                                         <Insets top="2"/>
                                 </padding>
-                                <Button prefWidth="300" text="Add Figure" onAction="#OpenFigureAdditionForm"/>
-                                <Button prefWidth="300" text="Export preset" onAction="#ShowSaveFileDialog"/>
-                                <Button prefWidth="300" text="Import preset" onAction="#ShowUploadFileDialog"/>
-                                <Button prefWidth="300" text="Save image" onAction="#ShowSaveImageDialog"/>
-                                <Button prefWidth="300" text="Move Figure" onAction="#OpenFigureMovementForm"/>
-                                <Button prefWidth="300" text="Remove Figure" onAction="#OpenFigureRemovalForm"/>
-                                <Button text="Clear Canvas" prefWidth="300" fx:id="Clear" onAction="#Clear_Click"></Button>
-                                <Button text="Shape's Area" prefWidth="300" fx:id="ShapeArea" onAction="#ShapeArea_Click"/>
-                                <Button text="Shape's Perimeter" prefWidth="300" fx:id="ShapePerimeter" onAction="#ShapePerimeter_Click"/>
-                                <Button text="Shapes' Areas Total"  prefWidth="300" fx:id="Area" onAction="#Area_Click"/>
-                                <Button text="Shapes' Perimeters Total" prefWidth="300" fx:id="Perimeter" onAction="#Perimeter_Click"/>
-                                <Button prefWidth="300" text="Intersection" onAction="#OpenIntersectionForm"/>
+                                <Button prefWidth="300" text="Добавить фигуру" onAction="#OpenFigureAdditionForm"/>
+                                <Button prefWidth="300" text="Сохранить файл" onAction="#ShowSaveFileDialog"/>
+                                <Button prefWidth="300" text="Загрузить файл" onAction="#ShowUploadFileDialog"/>
+                                <Button prefWidth="300" text="Сохранить изображение" onAction="#ShowSaveImageDialog"/>
+                                <Button prefWidth="300" text="Переместить фигуру" onAction="#OpenFigureMovementForm"/>
+                                <Button prefWidth="300" text="Удалить фигуру" onAction="#OpenFigureRemovalForm"/>
+                                <Button text="Очистить" prefWidth="300" fx:id="Clear" onAction="#Clear_Click"></Button>
+                                <Button text="Площадь фигуры" prefWidth="300" fx:id="ShapeArea" onAction="#ShapeArea_Click"/>
+                                <Button text="Периметр фигуры" prefWidth="300" fx:id="ShapePerimeter" onAction="#ShapePerimeter_Click"/>
+                                <Button text="Общая площадь"  prefWidth="300" fx:id="Area" onAction="#Area_Click"/>
+                                <Button text="Общий периметр" prefWidth="300" fx:id="Perimeter" onAction="#Perimeter_Click"/>
+                                <Button prefWidth="300" text="Пересечение фигур" onAction="#OpenIntersectionForm"/>
                         </VBox>
                         <Text translateY="200" GridPane.halignment="RIGHT" textAlignment="RIGHT"
                               fx:id="PerimeterOrArea" GridPane.columnIndex="1" GridPane.columnSpan="2"/>

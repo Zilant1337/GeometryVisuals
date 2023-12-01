@@ -1,6 +1,6 @@
 package com.example.javafxapp;
 
-import Geometry.*;
+import GeometryFigs.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
             Scene mainScene = new Scene(fxmlLoader.load(), 782, 560);
             controller = fxmlLoader.getController();
             controller.mainApplicationScript = this;
-            stage.setTitle("Geometric Shapes");
+            stage.setTitle("Фигуры!");
             stage.setScene(mainScene);
             stage.setResizable(false);
             stage.show();
@@ -42,15 +42,14 @@ public class HelloApplication extends Application {
             controller.redColoredShapesIndices[1]=-1;
             controller.CreateAxis();
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }

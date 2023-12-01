@@ -2,6 +2,7 @@ module com.example.javafxapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.swing;
+    requires GeometryConsolePartWithTests;
 
     requires transitive javafx.base;
     requires transitive javafx.graphics;

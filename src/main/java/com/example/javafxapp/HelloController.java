@@ -1,8 +1,8 @@
 package com.example.javafxapp;
 
-import Geometry.*;
-import Geometry.Circle;
-import Geometry.Polyline;
+import GeometryFigs.*;
+import GeometryFigs.Circle;
+import GeometryFigs.Polyline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -50,12 +50,12 @@ public class HelloController {
         catch (Exception ex)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -99,12 +99,12 @@ public class HelloController {
         catch (Exception ex)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -126,12 +126,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -155,12 +155,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -189,12 +189,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -210,12 +210,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -230,12 +230,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -249,12 +249,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -267,12 +267,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -288,12 +288,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -304,16 +304,16 @@ public class HelloController {
             double P = 0;
             for (IShape shape : shapesList)
                 P += shape.length();
-            PerimeterOrArea.setText("Perimeter: " + String.valueOf(P));
+            PerimeterOrArea.setText("Периметр: " + String.valueOf(P));
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -324,16 +324,16 @@ public class HelloController {
             double S = 0;
             for (IShape shape : shapesList)
                 S += shape.square();
-            PerimeterOrArea.setText("Area: " + String.valueOf(S));
+            PerimeterOrArea.setText("Площадь: " + String.valueOf(S));
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -348,9 +348,9 @@ public class HelloController {
         try {
             VBox root = new VBox();
             ComboBox shapesCBox = new ComboBox();
-            Button calcArea = new Button("Calculate " + popupName);
+            Button calcArea = new Button("Вычислить " + popupName);
             calcArea.setMaxSize(200, 20);
-            Button cancel = new Button("Cancel");
+            Button cancel = new Button("Отменить");
             cancel.setMaxSize(200, 20);
             for (IShape shape : shapesList)
                 shapesCBox.getItems().add(shape.toString());
@@ -364,9 +364,9 @@ public class HelloController {
             calcArea.setDisable(true);
             calcArea.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 if (popupName == "perimeter")
-                    PerimeterOrArea.setText("Perimeter: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).length());
+                    PerimeterOrArea.setText("Периметр: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).length());
                 else if (popupName == "area")
-                    PerimeterOrArea.setText("Area: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).square());
+                    PerimeterOrArea.setText("Площадь: " + shapesList.get(shapesCBox.getSelectionModel().getSelectedIndex()).square());
                 ((Stage) calcArea.getScene().getWindow()).close();
             });
             cancel.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
@@ -385,12 +385,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -413,12 +413,12 @@ public class HelloController {
                     Files.write(file.toPath(), sb.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE);
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setHeaderText("Success");
-                    alert.setContentText("Preset successfully exported");
+                    alert.setTitle("Удачно");
+                    alert.setHeaderText("Удачно");
+                    alert.setContentText("Файл удачно сохранён");
                     alert.showAndWait().ifPresent(rs -> {
                         if (rs == ButtonType.OK) {
-                            System.out.println("Pressed OK.");
+                            System.out.println("Нажат ОК");
                         }
                     });
                 } catch (IOException e) {
@@ -428,12 +428,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -511,12 +511,12 @@ public class HelloController {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -538,28 +538,28 @@ public class HelloController {
                     ImageIO.write(SwingFXUtils.fromFXImage(writableImage, null),
                             "png", file);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setHeaderText("Success");
-                    alert.setContentText("Image successfully saved");
+                    alert.setTitle("Удачно");
+                    alert.setHeaderText("Удачно");
+                    alert.setContentText("Изображение удачно сохранено");
                     alert.showAndWait().ifPresent(rs -> {
                         if (rs == ButtonType.OK) {
-                            System.out.println("Pressed OK.");
+                            System.out.println("Нажат ОК");
                         }
                     });
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    System.out.println("Error!");
+                    System.out.println("Ошибка!");
                 }
             }
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }

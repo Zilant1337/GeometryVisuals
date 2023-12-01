@@ -1,6 +1,6 @@
 package com.example.javafxapp;
 
-import Geometry.IShape;
+import GeometryFigs.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -37,12 +37,12 @@ public class RemovefigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -54,12 +54,12 @@ public class RemovefigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -73,24 +73,24 @@ public class RemovefigureView implements Initializable {
             RenewFigureToRemoveComboBox();
             mainWindowController.RedrawMainCanvas();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Success");
-            alert.setContentText("Shape successfully removed");
+            alert.setTitle("Удачно");
+            alert.setHeaderText("Удачно");
+            alert.setContentText("Фигура удачно убрана");
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
             CloseWindow();
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -104,12 +104,12 @@ public class RemovefigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
@@ -123,12 +123,12 @@ public class RemovefigureView implements Initializable {
         }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error");
-            alert.setContentText("Error: " + ex.getMessage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Ошибка");
+            alert.setContentText("Ошибка: " + ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
+                    System.out.println("Нажат ОК");
                 }
             });
         }
